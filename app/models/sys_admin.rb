@@ -1,2 +1,0 @@
-class SysAdmin < ApplicationRecord
-end
