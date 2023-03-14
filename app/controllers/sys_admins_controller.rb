@@ -4,10 +4,17 @@ class SysAdminsController < ApplicationController
     end
 
     def new
-        @sysadmin = SysAdmin.new
+        @sys_admin = SysAdmin.new
     end
 
     def create
+        @sys_admin = SysAdmin.new(sys_admin_params)
+        # debugger
+        if @sys_admin.save
+            redirect_to @sys_admin
+        else
+            render 'new', status: :unprocessable_entity
+        end
     end
 
     def show
@@ -22,5 +29,10 @@ class SysAdminsController < ApplicationController
     end
 
     def destroy
+    end
+
+    private
+    def sys_admin_params
+        params.require(:sys_admin).permit(:first_name, :last_name, :email, :password, :password_confirmation)
     end
 end
