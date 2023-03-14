@@ -4,6 +4,7 @@ class SysAdminsController < ApplicationController
     end
 
     def new
+        @sysadmin = SysAdmin.new
     end
 
     def create
@@ -11,6 +12,7 @@ class SysAdminsController < ApplicationController
 
     def show
         @sys_admin = SysAdmin.find(params[:id])
+        # debugger
     end
 
     def edit
