@@ -74,3 +74,4 @@ group :test do
 end
 
 gem "bullet", group: "development"
+gem 'bcrypt', '~> 3.1', '>= 3.1.12'
