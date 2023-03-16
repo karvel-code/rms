@@ -11,6 +11,8 @@ class SysAdminsController < ApplicationController
         @sys_admin = SysAdmin.new(sys_admin_params)
         # debugger
         if @sys_admin.save
+            reset_session
+            log_in @sys_admin
             redirect_to @sys_admin
         else
             render 'new', status: :unprocessable_entity
@@ -29,6 +31,8 @@ class SysAdminsController < ApplicationController
     end
 
     def destroy
+        log_out
+        redirect_to login
     end
 
     private

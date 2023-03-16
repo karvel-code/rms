@@ -10,4 +10,14 @@ module SessionsHelper
             @current_sys_admin ||= SysAdmin.find_by(id: session[:sys_admin_id])
         end
     end
+
+    #Checks if user is logged in
+    def logged_in
+        !current_sys_admin.nil?
+    end
+
+    def log_out
+        reset_session
+        @current_sys_admin = nil
+    end
 end
