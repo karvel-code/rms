@@ -1,0 +1,3 @@
+<%= turbo_stream.append 'apartments' do %>
+  <%= render partial: 'apartment/apartment', locals: { apartment: @apartment } %>
+<% end %>

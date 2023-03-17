@@ -1,8 +1,8 @@
 class ApartmentsController < ApplicationController
-  before_action :set_apartment, %i[show edit update destroy]
+  before_action :set_apartment, only: %i[show edit update destroy]
 
   def index
-    @partments = Apartment.all
+    @apartments = Apartment.all
   end
 
   def new
@@ -16,6 +16,7 @@ class ApartmentsController < ApplicationController
       if @partment.save
         flash[:notice] = 'Apartment was successfully created.'
         format.html { redirect_to apartment_path(@apartment) }
+        format.turbo_stream
       else 
         flash[:alert] = 'Apartment was not created.'
         render :new
@@ -32,6 +33,7 @@ class ApartmentsController < ApplicationController
       if @apartment.update(apartment_params)
         flash[:notice] = 'Apartment was successfully updated.'
         format.html { redirect_to apartment_path(@apartment) }
+        format.turbo_stream
       else 
         flash[:alert] = 'Apartment was not updated.'
         render :edit
@@ -44,7 +46,7 @@ class ApartmentsController < ApplicationController
       if @apartment.delete
         flash[:notice] = 'Apartment was successfully deleted.'
         format.html { redirect_to apartments_path }
-
+        format.turbo_stream
       end
     end
   end

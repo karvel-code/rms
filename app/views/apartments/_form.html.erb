@@ -1,0 +1,42 @@
+<div>
+  <%= form_with(model: apartment) do |form| %>
+    <% if apartment.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(apartment.errors.count, "error") %> prohibited this apartment from being saved:</h2>
+
+        <ul>
+          <% apartment.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class='my-5'>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class='my-5'>
+      <%= form.label :contact_person %>
+      <%= form.text_field :contact_person %>
+    </div>
+
+    <div class='my-5'>
+      <%= form.label :location %>
+      <%= form.text_field :location %>
+    </div>
+
+    <div class='my-5'>
+      <%= form.label :lat %>
+      <%= form.number_field :lat %>
+    </div>
+
+    <div class='my-5'>
+      <%= form.label :long %>
+      <%= form.number_field :long %>
+    </div>
+
+    <%= form.submit %>
+  <% end %>
+</div>
