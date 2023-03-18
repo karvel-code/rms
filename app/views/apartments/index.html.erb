@@ -2,8 +2,17 @@
   <h1>apartments</div>
 
   <div id='apartments'>
-    <%= @apartments.each do |apartment| %>
-      <%= apartment.name %>
+    <% @apartments.each do |apartment| %>
+
+      <%=link_to apartment.name, apartment_path(apartment) %>
+
+      <div>
+        <%= button_to 'delete', apartment_path(apartment), method: :delete, class: 'btn btn-sm btn-danger' %>
+      </div>
     <% end %>
   </div>
 </div>
+
+<%# new apartment %>
+<%= turbo_frame_tag Apartment.new %>
+<%= link_to 'New apartment', new_apartment_path, data: { turbo_frame: dom_id(Apartment.new)} %>

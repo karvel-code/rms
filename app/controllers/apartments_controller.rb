@@ -13,7 +13,7 @@ class ApartmentsController < ApplicationController
     @apartment = Apartment.new(apartment_params)
     
     respond_to do |format|
-      if @partment.save
+      if @apartment.save
         flash[:notice] = 'Apartment was successfully created.'
         format.html { redirect_to apartment_path(@apartment) }
         format.turbo_stream
