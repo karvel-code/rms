@@ -10,6 +10,8 @@
   </div>
 
   <div>
-    <%= link_to 'edit', edit_unit_path(unit) %>
+    <%= turbo_frame_tag 'edit-unit' do %>
+      <%= link_to 'edit', edit_unit_path(unit) %>
+    <% end %>
   </div>
 </div>

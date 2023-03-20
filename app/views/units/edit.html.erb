@@ -1,27 +1,29 @@
-<div>
-  <%= form_with(model: [@apartment, @unit]) do |form| %>
-    <% if @unit.errors.any? %>
-      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-        <h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
+<%= turbo_frame_tag 'edit-unit' do %>
+  <div>
+    <%= form_with(model: [@apartment, @unit]) do |form| %>
+      <% if @unit.errors.any? %>
+        <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+          <h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
 
-        <ul>
-          <% @unit.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
+          <ul>
+            <% @unit.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class='my-5'>
+        <%= form.label :floor %>
+        <%= form.text_field :floor %>
       </div>
+
+      <div class='my-5'>
+        <%= form.label :house_no %>
+        <%= form.number_field :house_no %>
+      </div>
+
+      <%= form.submit %>
     <% end %>
-
-    <div class='my-5'>
-      <%= form.label :floor %>
-      <%= form.text_field :floor %>
-    </div>
-
-    <div class='my-5'>
-      <%= form.label :house_no %>
-      <%= form.number_field :house_no %>
-    </div>
-
-    <%= form.submit %>
-  <% end %>
-</div>
+  </div>
+<% end %>

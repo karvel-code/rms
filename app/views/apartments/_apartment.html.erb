@@ -39,7 +39,9 @@
   <div>
     <h2>Units</h2>
     <%# render units %>
-    <%= link_to 'units', apartment_units_path(apartment) %>
+    <%= turbo_frame_tag 'units' do %>
+      <%= link_to 'units', apartment_units_path(apartment) %>
+    <% end %>
   </div>
 
   <div>
