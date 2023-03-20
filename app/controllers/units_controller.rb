@@ -34,7 +34,7 @@ class UnitsController < ApplicationController
 
       if @unit.update(unit_params)
         flash[:notice] = 'Unit was successfully updated.'
-        format.html { redirect_to apartment_units_path }
+        format.html { redirect_to unit_path(@unit) }
       else
         flash[:alert] = 'Could not update unit.'
         render :edit

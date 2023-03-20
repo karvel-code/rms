@@ -1,0 +1,10 @@
+<%# all units belonging to an apartment %>
+<div>
+  <% @units.each do |unit| %>
+    <div>
+      <%= unit.floor %>
+      <%= unit.house_no %>
+      <%= link_to 'show', unit_path(unit) %>
+    </div>
+  <% end %>
+</div>
