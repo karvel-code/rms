@@ -18,6 +18,7 @@ class UnitsController < ApplicationController
       if @unit.save
         flash[:notice] = 'Unit was successfully created.'
         format.html { redirect_to apartment_units_path }
+        format.turbo_stream
       else
         flash[:alert] = 'Could not create unit.'
         render :new
@@ -35,6 +36,7 @@ class UnitsController < ApplicationController
       if @unit.update(unit_params)
         flash[:notice] = 'Unit was successfully updated.'
         format.html { redirect_to unit_path(@unit) }
+        format.turbo_stream
       else
         flash[:alert] = 'Could not update unit.'
         render :edit
@@ -47,7 +49,8 @@ class UnitsController < ApplicationController
       
       respond_to do |format|
         flash[:notice] = 'Unit deleted successfully.'
-        format.html { redirect_to apartment_units_path }
+        format.html { redirect_to units_path }
+        format.turbo_stream
       end
     end
   end

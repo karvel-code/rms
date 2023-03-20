@@ -6,6 +6,7 @@
         <%= unit.floor %>
         <%= unit.house_no %>
         <%= link_to 'show', unit_path(unit) %>
+        <%= button_to 'delete', unit_path(unit), method: :delete %>
       </div>
     <% end %>
   <% end %>
