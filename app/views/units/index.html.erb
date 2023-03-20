@@ -1,5 +1,8 @@
 <%# all units belonging to an apartment %>
 <div>
+  <%# stream from channel %>
+  <%= turbo_stream_from 'units' %>
+  
   <%= turbo_frame_tag 'units' do %>
     <% @units.each do |unit| %>
       <div>
