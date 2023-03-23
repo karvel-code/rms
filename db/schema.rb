@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema[7.0].define(version: 2023_03_22_111635) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "apartments", force: :cascade do |t|
+    t.string "name"
+    t.string "contact_person"
+    t.string "location"
+    t.decimal "lat", precision: 8, scale: 3
+    t.decimal "long", precision: 8, scale: 3
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "sys_admins", force: :cascade do |t|
     t.string "first_name", null: false
@@ -25,5 +34,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_111635) do
     t.string "remember_digest"
     t.index ["email"], name: "index_sys_admins_on_email", unique: true
   end
-  
+
 end
