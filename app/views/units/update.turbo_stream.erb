@@ -1,0 +1,3 @@
+<%= turbo_stream.update @unit do %>
+  <%= render partial: 'units/unit', locals: { unit: @unit } %>
+<% end %>

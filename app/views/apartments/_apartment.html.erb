@@ -31,6 +31,20 @@
   </div>
 
   <div>
+    <%= turbo_frame_tag 'new-unit' do %>
+      <%= link_to 'new unit', new_apartment_unit_path(apartment) %>
+    <% end %>
+  </div>
+
+  <div>
+    <h2>Units</h2>
+    <%# render units %>
+    <%= turbo_frame_tag 'units' do %>
+      <%= link_to 'units', apartment_units_path(apartment) %>
+    <% end %>
+  </div>
+
+  <div>
     <%= link_to 'back', apartments_path %>
   </div>
 </div>

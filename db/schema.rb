@@ -24,6 +24,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_111635) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "units", force: :cascade do |t|
+    t.string "floor"
+    t.integer "house_no"
+    t.bigint "apartment_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["apartment_id"], name: "index_units_on_apartment_id"
+  end
+
+  add_foreign_key "units", "apartments"
+  
   create_table "sys_admins", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -34,5 +45,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_111635) do
     t.string "remember_digest"
     t.index ["email"], name: "index_sys_admins_on_email", unique: true
   end
-
 end

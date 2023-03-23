@@ -1,0 +1,16 @@
+<%# all units belonging to an apartment %>
+<div>
+  <%# stream from channel %>
+  <%= turbo_stream_from 'units' %>
+  
+  <%= turbo_frame_tag 'units' do %>
+    <% @units.each do |unit| %>
+      <div>
+        <%= unit.floor %>
+        <%= unit.house_no %>
+        <%= link_to 'show', unit_path(unit) %>
+        <%= button_to 'delete', unit_path(unit), method: :delete %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

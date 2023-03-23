@@ -1,0 +1,7 @@
+<div>
+  <%= turbo_frame_tag 'new-unit' do %>
+    <h3>New unit</h3>
+    <%= render 'form', apartment: @apartment, unit: @unit %>
+    <%= link_to 'cancel', apartment_path(@apartment) %>
+  <% end %>
+</div>
