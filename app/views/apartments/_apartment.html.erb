@@ -1,0 +1,36 @@
+<div id="<%= dom_id apartment%>">
+  <div>
+    <strong>Name:</strong>
+    <p><%= apartment.name %></p>
+  </div>
+
+  <div>
+    <strong>Contact_person:</strong>
+    <p><%= apartment.contact_person %></p>
+  </div>
+
+  <div>
+    <strong>Location:</strong>
+    <p><%= apartment.location %></p>
+  </div>
+
+  <div>
+    <strong>Lat:</strong>
+    <p><%= apartment.lat %></p>
+  </div>
+  
+  <div>
+    <strong>Long:</strong>
+    <p><%= apartment.long %></p>
+  </div>
+
+  <div>
+    <%= turbo_frame_tag 'edit-apartment' do %>
+      <%= link_to 'Edit', edit_apartment_path %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to 'back', apartments_path %>
+  </div>
+</div>
