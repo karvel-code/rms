@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_22_111635) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_25_190536) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "apartments", force: :cascade do |t|
+  create_table "apartments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "contact_person"
     t.string "location"
@@ -24,18 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_111635) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "units", force: :cascade do |t|
-    t.string "floor"
-    t.integer "house_no"
-    t.bigint "apartment_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["apartment_id"], name: "index_units_on_apartment_id"
-  end
-
-  add_foreign_key "units", "apartments"
-  
-  create_table "sys_admins", force: :cascade do |t|
+  create_table "sys_admins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "email", null: false
@@ -45,4 +34,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_111635) do
     t.string "remember_digest"
     t.index ["email"], name: "index_sys_admins_on_email", unique: true
   end
+
+  create_table "units", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "floor"
+    t.integer "house_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "apartment_id", null: false
+    t.index ["apartment_id"], name: "index_units_on_apartment_id"
+  end
+
+  add_foreign_key "units", "apartments"
 end
