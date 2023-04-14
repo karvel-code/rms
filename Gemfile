@@ -75,3 +75,5 @@ end
 
 gem "bullet", group: "development"
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
+
+gem "devise", "~> 4.9"
