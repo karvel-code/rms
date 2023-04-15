@@ -15,18 +15,18 @@ class SwitchToUuid < ActiveRecord::Migration[7.0]
 
     
 
-    add_column :sys_admins, :uuid, :uuid, default: "gen_random_uuid()", null: false
-    rename_column :sys_admins, :id, :integer_id
-    rename_column :sys_admins, :uuid, :id
-    execute "ALTER TABLE sys_admins drop constraint sys_admins_pkey;"
-    execute "ALTER TABLE sys_admins ADD PRIMARY KEY (id);"
+    # add_column :sys_admins, :uuid, :uuid, default: "gen_random_uuid()", null: false
+    # rename_column :sys_admins, :id, :integer_id
+    # rename_column :sys_admins, :uuid, :id
+    # execute "ALTER TABLE sys_admins drop constraint sys_admins_pkey;"
+    # execute "ALTER TABLE sys_admins ADD PRIMARY KEY (id);"
 
     # Optionally you remove auto-incremented
     # default value for integer_id column
-    execute "ALTER TABLE ONLY sys_admins ALTER COLUMN integer_id DROP DEFAULT;"
-    change_column_null :sys_admins, :integer_id, true
-    execute "DROP SEQUENCE IF EXISTS sys_admins_id_seq"
-    remove_column :sys_admins , :integer_id
+    # execute "ALTER TABLE ONLY sys_admins ALTER COLUMN integer_id DROP DEFAULT;"
+    # change_column_null :sys_admins, :integer_id, true
+    # execute "DROP SEQUENCE IF EXISTS sys_admins_id_seq"
+    # remove_column :sys_admins , :integer_id
 
 
     add_column :units, :uuid, :uuid, default: "gen_random_uuid()", null: false
