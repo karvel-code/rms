@@ -17,10 +17,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'apartments#index'
 
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
-
   resources :apartments, shallow: true do
     resources :units
   end
