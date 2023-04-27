@@ -77,3 +77,4 @@ gem "bullet", group: "development"
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 
 gem "tailwindcss-rails", "~> 2.0"
+gem "devise", "~> 4.9"
