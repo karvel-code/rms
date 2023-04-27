@@ -77,3 +77,4 @@ gem "bullet", group: "development"
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 
 gem "devise", "~> 4.9"
+gem 'devise_invitable', '~> 2.0.0'
