@@ -4,8 +4,9 @@
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+
   set_current_tenant_by_subdomain(:account, :subdomain)
+  # TODO: Ensure that a tenant is set by subdomain and undestand how it works
 
   protected
 
