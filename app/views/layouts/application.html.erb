@@ -11,25 +11,15 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%# devise links %>
-    <% if tenant_signed_in? %>
-      <%= button_to 'log out', destroy_tenant_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'sign in', new_tenant_session_path %>
-      <%= link_to 'sign up', new_tenant_registration_path %>
-    <% end %>
-
-    <% if tenant_signed_in? %>
-      <%= button_to 'admin log out', destroy_admin_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'admin sign in',  new_admin_session_path %>
-      <%= link_to 'admin sign up', new_admin_registration_path %>
-    <% end %>
-
-    <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
-  </body>
+  <body class="grid grid-cols-4 gap-4">
+    <div class="col-span-1">
+      <%= render 'layouts/navigation' %>
+    </div>
+    <div class="col-span-3">
+      <div class="bg-slate-500">
+        <%= yield %>
+      </div>
+    </div>  
+  <script src="./assets/vendor/preline/dist/preline.js"></script>
+</body>
 </html>
